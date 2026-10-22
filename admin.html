@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Exam Results Dashboard</title>
+  <title>Exam Results Dashboard</title>
   
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -494,23 +494,16 @@
     let allExamData = [];
     let selectedDocIds = new Set();
 
-    // Fetch All Exam Data from Firestore Collection "quiz_results 6"
+    // Fetch All Exam Data from Firestore Collection "quiz_results 8"
     function fetchResults() {
       db.collection("quiz_results 8").orderBy("submittedAt", "desc").get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          // Fallback if submittedAt doesn't exist on older documents
-          return db.collection("quiz_results 7").get();
-        }
-        return querySnapshot;
-      })
       .then((querySnapshot) => {
         allExamData = [];
         selectedDocIds.clear();
         updateBulkDeleteButton();
 
         if (querySnapshot.empty) {
-          resultsContainer.innerHTML = '<p style="text-align:center; padding: 50px; color: var(--text-muted);">এখনও কেউ পরীক্ষা দেয়নি বা কোনো রেকর্ড নেই।</p>';
+          resultsContainer.innerHTML = '<p style="text-align:center; padding: 50px; color: var(--text-muted);">এখনও কেউ পরীক্ষা দেয়নি বা কোনো রেকর্ড নেই।</p>';
           calculateAnalytics([]);
           return;
         }
@@ -523,8 +516,8 @@
         renderResults(allExamData);
       })
       .catch((error) => {
-        console.error("ডাটা লোড করতে সমস্যা হয়েছে: ", error);
-        resultsContainer.innerHTML = '<p style="color:#f87171; text-align:center; padding: 40px;">ডাটা লোড করতে সমস্যা হয়েছে। ফায়ারবেজ কানেকশন চেক করুন।</p>';
+        console.error("ডাটা লোড করতে সমস্যা হয়েছে: ", error);
+        resultsContainer.innerHTML = '<p style="color:#f87171; text-align:center; padding: 40px;">ডাটা লোড করতে সমস্যা হয়েছে। ফায়ারবেজ কানেকশন চেক করুন।</p>';
       });
     }
 
@@ -553,7 +546,7 @@
       resultsContainer.innerHTML = '';
 
       if (dataList.length === 0) {
-        resultsContainer.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 30px;">কোনো ফলাফল পাওয়া যায়নি!</p>';
+        resultsContainer.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 30px;">কোনো ফলাফল পাওয়া যায়নি!</p>';
         return;
       }
 
@@ -663,33 +656,33 @@
 
     // Delete Single Record
     function deleteSingleRecord(docId, studentName) {
-      if (confirm(`do you want'${studentName}'-to delete this quiz??`)) {
+      if (confirm(`আপনি কি '${studentName}'-এর এই রেজাল্টটি ডিলিট করতে চান?`)) {
         db.collection("quiz_results 8").doc(docId).delete()
         .then(() => {
           fetchResults();
         })
-        .catch(err => console.error("ডিলিট করতে সমস্যা হয়েছে: ", err));
+        .catch(err => console.error("ডিলিট করতে সমস্যা হয়েছে: ", err));
       }
     }
 
-    // Delete Selected Records in Bulk
+    // Delete Selected Records in Bulk (FIXED COLLECTION NAME HERE)
     function deleteSelectedRecords() {
       const count = selectedDocIds.size;
       if (count === 0) return;
 
-      if (confirm(`do you want ${count}to delete this?`)) {
+      if (confirm(`আপনি কি সিলেক্ট করা ${count}টি রেকর্ড ডিলিট করতে চান?`)) {
         const batch = db.batch();
         selectedDocIds.forEach(id => {
-          const docRef = db.collection("quiz_results 7").doc(id);
+          const docRef = db.collection("quiz_results 8").doc(id); // ← এখানে আগে quiz_results 7 ছিল, যা ঠিক করে quiz_results 8 করা হয়েছে
           batch.delete(docRef);
         });
 
         batch.commit()
         .then(() => {
-          alert(`${count}টি রেকর্ড সফলভাবে মুছে ফেলা হয়েছে!`);
+          alert(`${count}টি রেকর্ড সফলভাবে মুছে ফেলা হয়েছে!`);
           fetchResults();
         })
-        .catch(err => console.error("বাল্ক ডিলিট করতে সমস্যা হয়েছে: ", err));
+        .catch(err => console.error("বাল্ক ডিলিট করতে সমস্যা হয়েছে: ", err));
       }
     }
 
