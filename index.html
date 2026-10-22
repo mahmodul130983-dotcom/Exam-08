@@ -377,7 +377,7 @@
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
       transition: all 0.2s;
-      display: none; /* Sudu 40 no. prosthne dekhano hobe */
+      display: none;
     }
 
     .submit-exam-btn:hover {
@@ -591,7 +591,7 @@
         <i class="fa-solid fa-trophy"></i> Results are ready
       </div>
       <h2 style="font-size: 26px; font-weight: 700; margin-top: 8px;">Results Description</h2>
-      <p style="color: var(--text-muted); font-size: 14px;">'quiz_results 8' are save in database</p>
+      <p style="color: var(--text-muted); font-size: 14px;">'quiz_results 8' are saved in database</p>
       
       <div class="score-circle">
         <div class="number" id="final-score">০.০০</div>
@@ -628,7 +628,7 @@
     <div class="modal-content">
       <i class="fa-solid fa-circle-exclamation" style="font-size: 48px; color: #f59e0b; margin-bottom: 12px;"></i>
       <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px;">Do you want to finish the exam?</h3>
-      <p id="modal-summary-text" style="color: var(--text-muted); font-size: 14px;">submit the all question ans</p>
+      <p id="modal-summary-text" style="color: var(--text-muted); font-size: 14px;">submit all question ans</p>
       
       <div class="modal-actions">
         <button class="nav-btn" onclick="closeSubmitModal()">back to previous</button>
@@ -651,89 +651,89 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // 40 Questions
+    // 80 Questions
     const questionsDatabase = [
-      
-{ question: "1. 'অপরিচিতা' গল্পের বিশেষ দিক কোনটি?", options: ["নারীর সঠিক মূল্যায়ন", "পুরুষতন্ত্রের অসারতা", "নারীশিক্ষার প্রসার", "নারীর ব্যক্তিত্বের জাগরণ"], correct:3},
-{ question: "2.'বেঙ্গল গেজেট' কার সম্পাদনায় প্রকাশিত হয়?", options: ["জেমস অগাস্টাস হিকি", "হরিনাথ মজুমদার", "ঈশ্বরচন্দ্র বিদ্যাসাগর", "অক্ষয় কুমার দত্ত"], correct: 0},
-{ question: "3. রবীন্দ্রনাথের 'সোনার তরী' কবিতায় মূলত কী ব্যক্ত হয়েছে?", options: ["মেঘের গর্জন", "বর্ষার চিত্র", "কবির আনন্দ", "কবির বেদনা"], correct: 3 },
-{ question: "4. "যদিও তিনি ধনী, তবুও তিনি কৃপণ।"—বাক্যটিকে সরল বাক্যে রূপান্তর করলে নিচের কোনটি সঠিক হবে?", options: ["তিনি ধনী কিন্তু কৃপণ", "ধনী হওয়া সত্ত্বেও তিনি কৃপণতা করেন", "ধনী হলেও তিনি কৃপণ", "তাঁর ধন থাকলেও তিনি কৃপণ"], correct: 2 },
-{ question: "5. 'যার উপস্থিত বুদ্ধি আছে' এবং 'যে গাছ অন্য গাছের ওপর জন্মায়'—এদের এককথায় প্রকাশ যথাক্রমে কী হবে?", options: ["আশুবুদ্ধি ও পরজীবী", "প্রত্যুৎপন্নমতি ও আগাছা", "বুদ্ধিমান ও পরভৃত", "প্রত্যুৎপন্নমতি ও পরগাছা"], correct: 3 },
-{ question: "6. 'লালসালু' উপন্যাসে মজিদের চরিত্রে মহব্বতপুর গ্রামের মানুষের অন্ধবিশ্বাসের সুযোগ নেওয়ার মূল মনস্তাত্ত্বিক কারণ কী ছিল?", options: ["ধর্মীয় শাসন কায়েম করা", "নিজের অস্তিত্ব রক্ষা ও ক্ষমতার লিপ্সা", "গ্রামবাসীর নৈতিক উন্নয়ন করা", "খালেক ব্যাপারীর ওপর প্রতিশোধ নেওয়া"], correct: 1 },
-{ question: "7. 'অপরিচিতা' গল্পে অনুপমের মামার ব্যক্তিত্বের কোন দিকটি সবচেয়ে বেশি প্রকাশ পেয়েছে?", options: ["চরম অর্থলিপ্সা ও সংকীর্ণতা", "ভাগ্নের প্রতি অন্ধ স্নেহ", "আভিজাত্যের অহংকার", "কল্যাণীর প্রতি গভীর বিদ্বেষ"], correct: 0 },
-{ question: "8. কাজী নজরুল ইসলামের 'বিদ্রোহী' কবিতায় উল্লিখিত 'অর্ফিয়াস' (Orpheus) মূলত কোন দেশের পুরাণের চরিত্র?", options: ["রোমান পুরাণ", "ভারতীয় পুরাণ", "গ্রিক পুরাণ", "মিশরীয় পুরাণ"], correct: 2 },
-{ question: "9. 'অর্ধাঙ্গী' প্রবন্ধে বেগম রোকেয়া সাখাওয়াত হোসেন তৎকালীন সমাজে নারীর অবস্থানকে কার সাথে তুলনা করেছেন?", options: ["গৃহপালিত পশুর সাথে", "অন্ধকারের বন্দির সাথে", "স্বামীর ছায়ার সাথে", "ডানাবিহীন পাখির সাথে"], correct: 1 },
-{ question: "10. আল মাহমুদের 'প্রত্যাবর্তনের লজ্জা' কবিতাটি কবির কোন কাব্যগ্রন্থের অন্তর্ভুক্ত?", options: ["লোক লোকান্তর", "কালের কলস", "মায়াবী পর্দা দুলে ওঠো", "সোনালী কাবিন"], correct: 3 },
-{ question: "11. 'তাহারেই পড়ে মনে' কবিতায় কবির উদাসীনতার মূল কারণ কী?", options: ["বসন্তের আগমনে কবির অনীহা", "প্রকৃতির রুক্ষ ও জীর্ণ রূপ", "কবির ব্যক্তিগত জীবনের তীব্র শোকানুভূতি", "ভক্তদের অতি উৎসাহী আচরণ"], correct: 2 },
-{ question: "12. 'নেকলেস' গল্পের মূল নৈতিক শিক্ষা (Moral Lesson) কী?", options: ["কৃত্রিম অহংকার ও অসত্য জীবনকে ধ্বংসের মুখে ঠেলে দেয়", "ভাগ্যকে মেনে নেওয়াই মানুষের নিয়তি", "অতিরিক্ত অলংকারপ্রীতি সর্বনাশের কারণ", "বন্ধুদের সবসময় দামি উপহার দেওয়া উচিত"], correct: 0 },
-{ question: "13. 'আমি কিংবদন্তির কথা বলছি' কবিতায় 'কিংবদন্তি' শব্দটি কবি কী অর্থে ব্যবহার করেছেন?", options: ["অলৌকিক কোনো উপকথা", "ঐতিহ্যের ধারক ও সংগ্রামী পূর্বপুরুষ", "কোনো কাল্পনিক বীরের কাহিনি", "প্রাচীন সমাজব্যবস্থার নিয়মাবলি"], correct: 1 },
-{ question: "14. 'বিলাসী' গল্পে লেখক শরৎচন্দ্র চট্টোপাধ্যায় তৎকালীন হিন্দু সমাজের কোন অন্ধকার দিকটিকে তীব্রভাবে আক্রমণ করেছেন?", options: ["অর্থনৈতিক বৈষম্য", "জাতিভেদ প্রথা ও সংকীর্ণ মানসিকতা", "শিক্ষার অভাব", "যৌথ পরিবারের কলহ"], correct: 1 },
-{ question: "15. 'প্রতিদান' কবিতায় 'কাঁটা' শব্দের মাধ্যমে কবি জসীমউদ্দীন মানুষের কোন আচরণকে বুঝিয়েছেন?", options: ["দারিদ্র্য ও দুঃখ", "নিষ্ঠুরতা ও হিংসা", "পথের বাধা", "শারীরিক অসুস্থতা"], correct: 1 },
-{ question: "16. 'উচ্চারণ' শব্দটিতে মোট কয়টি দল বা অক্ষর (Syllable) রয়েছে?", options: ["দুইটি", "তিনটি", "চারটি", "পাঁচটি"], correct: 1 },
-{ question: "17. বাংলা আভিধানিক ক্রম অনুসারে নিচের কোন শব্দগুচ্ছটি সঠিক অনুক্রমে সাজানো আছে?", options: ["ক্ষুর, গঙ্গা, চক্ষু, জ্ঞান", "গঙ্গা, ক্ষুর, জ্ঞান, চক্ষু", "চক্ষু, জ্ঞান, ক্ষুর, গঙ্গা", "জ্ঞান, চক্ষু, গঙ্গা, ক্ষুর"], correct: 0 },
-{ question: "18. 'অপরিচিতা' গল্পে বিবাহলগ্নে কন্যাকর্তা শম্ভুনাথ সেনের আচরণে কোন বৈশিষ্ট্যটি সবচেয়ে উজ্জ্বল হয়ে উঠেছিল?", options: ["লোভ ও চতুরতা", "আত্মমর্যাদাবোধ ও দৃঢ়তা", "ভীরুতা ও নম্রতা", "আভিজাত্যের অহংকার"], correct: 1 },
-{ question: "19. 'সোনার তরী' কবিতায় 'ভরা নদী ক্ষুরধারা' বলতে নদীর কোন অবস্থাকে বোঝানো হয়েছে?", options: ["শান্ত ও শান্তিময় প্রবাহ", "শুকিয়ে যাওয়া মরা নদী", "ক্ষুরের মতো ধারালো ও হিংস্র গতিময় স্রোত", "চারদিকে উপচে পড়া বন্যা"], correct: 2 },
-{ question: "20. নিচের কোন জোড়ের দুটি বানানই সম্পূর্ণ শুদ্ধ?", options: ["মুহুর্ত ও নুপুর", "মুহূর্ত ও নূপুর", "মূহুর্ত ও নূপুর", "মুহূর্ত ও নুপুর"], correct: 1 },
-{ question: "21. 'যৌবনের গান' প্রবন্ধে নজরুল 'বার্ধক্য' বলতে মূলত কী বুঝিয়েছেন?", options: ["বয়স ষাট বছরের বেশি হওয়া", "শারীরিক সক্ষমতা হারিয়ে ফেলা", "মৃতপ্রায়, গতিহীন ও সংস্কারাচ্ছন্ন মন", "অভিজ্ঞতায় সমৃদ্ধ প্রবীণ ব্যক্তি"], correct: 2 },
-{ question: "22. আড়চোখে যে চাউনি, তাকে কী বলে?", options: ["আরূঢ়", "আরাধিত", "কটাক্ষ", "বরাভয়"], correct: 2 },
-{ question:"23. oun of the word 'brief' is—", options: ["Briefly", "Brief", "Brevity", "None of these"], correct: 2 },
-{ question :" 24. 'I'm a deeply superficial person.' The sentence is an example of—", options: ["Hyperbole", "Oxymoron", "Simile", "Metaphor"], correct: 1 },
-{ question: "25.'Bird's-eye view' means—", options: ["See exhaustively", "Eyes of birds", "Person in similar nature", "A rough idea"], correct: 3 },
-{ question : " 26.His explanation was unnecessarily convoluted and confusing. The antonym of 'convoluted' is—", options: ["Intricate", "Perplexing", "Simple", "Laudatory"], correct: 2},
-{ question :"27. Although the author's language is relatively simple, the underlying themes of the novel are—", options: ["Trivial", "Predictable", "Superficial", "Profound"], correct: 3},
-{ question: "28. The sun shines --- our heads at noon.", options: ["over", "on", "above", "in"], correct: 2 },
-{ question: "29. "One should keep one's promise." The passive voice is—", options: ["A promise should be kept.", "A promise should be kept by one.", "One's promise should be kept by one.", "Promise should be kept."], correct: 0 },
-{ question: "30. What would you do if you --- a ghost?", options: ["see", "saw", "had seen", "will see"], correct: 1 },
-{ question: "31. Who is the author of the story "The Old Man at the Bridge"?", options: ["Bob Dylan", "George Herbert", "Ernest Hemingway", "W. H. Auden"], correct: 2 },
-{ question: "32. Synonym of 'MITIGATE':", options: ["Aggravate", "Intensify", "Alleviate", "Worsen"], correct: 2 },
-{ question: "33. Antonym of 'QUERULOUS':", options: ["Complaining", "Contented", "Fretful", "Petulant"], correct: 1 },
-{ question: "34. "I saw ocean in your eyes." It is an example of—", options: ["Paradox", "Metaphor", "Hyperbole", "Simile"], correct: 1 },
-{ question: "35. 'Take the bull by the horns' means—", options: ["To be brave", "To deal with a difficulty directly", "To be afraid", "To run away"], correct: 1 },
-{ question: "36. He is endowed --- great talents.", options: ["with", "by", "in", "of"], correct: 0 },
-{ question: "37. Choose the correctly spelt word.", options: ["Tyranny", "Tyranney", "Tiranney", "Tyrenny"], correct: 0 },
-{ question: "38. Choose the sentence that is grammatically correct.", options: ["That Mina secured the highest marks are really surprising.", "That Mina secured the highest marks were really surprising.", "That Mina secured the highest marks is really surprising.", "That Mina secured the highest mark have been really surprising."], correct: 2 },
-{ question: "39. He argued --- his brother over a trivial matter.", options: ["to", "with", "for", "at"], correct: 1 },
-{ question: "40. Choose the correct sentence.", options: ["Many teenagers addicted to social media.", "Many teenagers are addicting to social media.", "Many teenagers being addicted to social media.", "Many teenagers are addicted to social media."], correct: 3 } { question: "41. বাংলাদেশের কোন ভূমিরূপটি সবচেয়ে পুরাতন?", options: ["প্লাইস্টোশিন", "টারশিয়ারি", "প্লাবন ভূমি", "লালমাই পাহাড়"], correct: 1 },
-{ question: "42. বাংলাদেশের কোন অঞ্চলে আকস্মিক বন্যা হয়?", options: ["উত্তর-পশ্চিমাঞ্চল", "উত্তর-পূর্বাঞ্চল", "দক্ষিণ-পশ্চিমাঞ্চল", "দক্ষিণ-পূর্বাঞ্চল"], correct: 1 },
-{ question: "43. কোনটি জলবায়ুর উপাদান নয়?", options: ["উষ্ণতা", "আর্দ্রতা", "বায়ুপ্রবাহ", "সমুদ্রস্রোত"], correct: 3 },
-{ question: "44. হালদা ভ্যালি কোথায় অবস্থিত?", options: ["রাঙ্গামাটি", "খাগড়াছড়ি", "বান্দরবান", "চট্টগ্রাম"], correct: 1 },
-{ question: "45. গ্রিনিচ প্রমাণ সময়ের সাথে বাংলাদেশ সময়ের পার্থক্য কত ঘণ্টা?", options: ["৬ ঘণ্টা", "+ ১২ ঘণ্টা", "- ৫ ঘণ্টা", "+ ৬ ঘণ্টা"], correct: 3 },
-{ question: "46. বাংলাদেশের মহীসোপানের দৈর্ঘ্য কত?", options: ["১২ নটিক্যাল মাইল", "৩৫০ নটিক্যাল মাইল", "২০০ নটিক্যাল মাইল", "৩৫৪ নটিক্যাল মাইল"], correct: 3 },
-{ question: "47. যশোরের পূর্বনাম কী?", options: ["খলিফাবাদ", "খলিফাতাবাদ", "জাহানাবাদ", "নাসিরাবাদ"], correct: 1 },
-{ question: "48. বরেন্দ্র অঞ্চলের প্রধান খনিজ কোনটি?", options: ["কয়লা", "প্রাকৃতিক গ্যাস", "গ্রানাইট", "কালো সোনা"], correct: 0 },
-{ question: "49. বাংলাদেশের সীমান্তবর্তী ভারতের জেলা কতটি?", options: ["৩২টি", "৩৩টি", "৩০টি", "৩টি"], correct: 0 },
-{ question: "50. বাংলাদেশের বৃহত্তম পাহাড় কোনটি?", options: ["মোদক টং", "তাজিং ডং", "গারো পাহাড়", "চন্দ্রনাথ পাহাড়"], correct: 2 },
-{ question: "51. কর্ণফুলী নদীতে বাঁধ দেওয়ার ফলে কোন লেকের সৃষ্টি হয়েছে?", options: ["ফয়েজ লেক", "মহামায়া লেক", "প্রান্তিক লেক", "কাপ্তাই লেক"], correct: 3 },
-{ question: "52. বন্যার ঝুঁকিতে বিশ্বে বাংলাদেশের অবস্থান কততম?", options: ["২য়", "৭ম", "৪র্থ", "১ম"], correct: 3 },
-{ question: "53. ব-দ্বীপ পরিকল্পনা বাস্তবায়নে কতটি হটস্পট নির্ধারণ করা হয়েছে?", options: ["৬টি", "৫টি", "৩৩টি", "৮টি"], correct: 0 },
-{ question: "54. 'বাংলাদেশের ছাদ' বলা হয় কাকে?", options: ["সাজেক ভ্যালি", "বান্দরবান", "খাগড়াছড়ি", "চিম্বুক পাহাড়"], correct: 1 },
-{ question: "55. ষষ্ঠ জনশুমারি ও গৃহগণনা-২০২২-এর চূড়ান্ত প্রতিবেদন অনুযায়ী, জনসংখ্যার ঘনত্ব সর্বনিম্ন কোন জেলায়?", options: ["বান্দরবান", "রাঙ্গামাটি", "খাগড়াছড়ি", "বরিশাল"], correct: 1 },
-{ question: "56. নিচের কোন বিলকে পশ্চিমা বাহিনীর নদী নামে অভিহিত করা হয়?", options: ["চলন বিল", "আড়িয়াল বিল", "ভবদহ বিল", "ডাকাতিয়া বিল"], correct: 3 },
-{ question: "57. 'বাংলাদেশ ডেল্টা প্ল্যান' কিসের সাথে সম্পৃক্ত?", options: ["গ্রিনহাউজ গ্যাস", "জলবায়ু পরিবর্তন", "কর্মসংস্থান সৃষ্টি", "বিশ্বায়ন"], correct: 1 },
-{ question: "58. জাতীয় দুর্যোগ ব্যবস্থাপনা নীতিমালা প্রণীত হয় কবে?", options: ["২০১২ সালে", "২০১৪ সালে", "২০১৬ সালে", "২০১৫ সালে"], correct: 3 },
-{ question: "59. বাংলাদেশের সর্বশেষ সিটি কর্পোরেশন কোনটি?", options: ["ময়মনসিংহ", "গাজীপুর", "বগুড়া", "ফরিদপুর"], correct: 2 },
-{ question: "60. বর্তমানে দেশে থানার সংখ্যা কতটি?", options: ["৬৫৯টি", "৩৩০টি", "৫০০টি", "৪৯৫টি"], correct: 0 },
- { question: "61. বাংলাদেশের বর্তমান রাষ্ট্রপতি কে?", options: ["তারেক রহমান", "মির্জা ফখরুল ইসলাম আলমগীর", "আমীর খসরু মাহমুদ চৌধুরী", "সালাহউদ্দিন আহমদ"], correct: 1 },
-{ question: "62. বাংলাদেশের বর্তমান সরকারের পররাষ্ট্রমন্ত্রী কে?", options: ["খলিলুর রহমান", "মির্জা ফখরুল ইসলাম আলমগীর", "আন্দালিভ রহমান পার্থ", "আমীর খসরু মাহমুদ চৌধুরী"], correct: 0 },
-{ question: "63. বাংলাদেশের বর্তমান সরকারের অর্থ ও পরিকল্পনামন্ত্রী কে?", options: ["সালাহউদ্দিন আহমদ", "আমীর খসরু মাহমুদ চৌধুরী", "আবদুল মঈন খান", "ইকবাল হাসান মাহমুদ"], correct: 1 },
-{ question: "64. বাংলাদেশের বর্তমান সরকারের স্বরাষ্ট্রমন্ত্রী কে?", options: ["খলিলুর রহমান", "আরিফুল হক চৌধুরী", "সালাহউদ্দিন আহমদ", "আসাদুজ্জামান"], correct: 2 },
-{ question: "65. বাংলাদেশের বর্তমান সরকারের শিক্ষা এবং প্রাথমিক ও গণশিক্ষামন্ত্রী কে?", options: ["এ এইচ এম এহছানুল হক মিলন", "নিতাই রায় চৌধুরী", "মিজানুর রহমান মিনু", "ফকির মাহবুব আনাম"], correct: 0 },
-{ question: "66. বাংলাদেশের বর্তমান সরকারের বিদ্যুৎ, জ্বালানি ও খনিজ সম্পদমন্ত্রী কে?", options: ["শেখ রবিউল আলম", "ইকবাল হাসান মাহমুদ", "আবদুল আউয়াল মিন্টু", "মোহাম্মদ আমিন উর রশিদ"], correct: 1 },
-{ question: "67. বাংলাদেশের বর্তমান সরকারের শিল্প, বস্ত্র ও পাট এবং বাণিজ্যমন্ত্রী কে?", options: ["খন্দকার আব্দুল মুক্তাদির", "আমীর খসরু মাহমুদ চৌধুরী", "আবদুল মঈন খান", "আন্দালিভ রহমান পার্থ"], correct: 0 },
-{ question: "68. বাংলাদেশের বর্তমান সরকারের পরিবেশ, বন ও জলবায়ু পরিবর্তনমন্ত্রী কে?", options: ["আসাদুল হাবিব দুলু", "আবদুল আউয়াল মিন্টু", "মোহাম্মদ আমিন উর রশিদ", "শহীদউদ্দীন চৌধুরী এ্যানি"], correct: 1 },
-{ question: "69. বাংলাদেশের বর্তমান সরকারের ডাক, টেলিযোগাযোগ ও তথ্যপ্রযুক্তিমন্ত্রী কে?", options: ["ফকির মাহবুব আনাম", "শেখ রবিউল আলম", "নিতাই রায় চৌধুরী", "আহমেদ আযম খান"], correct: 0 },
-{ question: "70. বাংলাদেশের বর্তমান সরকারের আইন, বিচার ও সংসদবিষয়কমন্ত্রী কে?", options: ["জাকারিয়া তাহের", "মোঃ আসাদুজ্জামান", "সালাহউদ্দিন আহমদ", "আবদুল মঈন খান"], correct: 1 },
-{ question: "71. বাংলাদেশের দুর্নীতি দমন কমিশনের (দুদক) চেয়ারম্যান হিসেবে নিয়োগ পান কে?", options: ["এ কে এম আসাদুজ্জামান", "জাহাঙ্গীর আলম খান", "মোঃ সাজ্জাদ হোসেন ভূঁইয়া", "খলিলুর রহমান"], correct: 0 },
-{ question: "72. বাংলাদেশের দুর্নীতি দমন কমিশন কোন ধরনের অপরাধ প্রতিরোধ ও অনুসন্ধানের সঙ্গে যুক্ত?", options: ["শুধু সাইবার অপরাধ", "দুর্নীতি ও দুর্নীতিসংশ্লিষ্ট অপরাধ", "শুধু সীমান্ত অপরাধ", "শুধু পরিবেশদূষণ"], correct: 1 },
-{ question: "73. বাংলাদেশের মন্ত্রিসভায় সম্প্রসারণের সময় আন্দালিভ রহমান পার্থকে কোন মন্ত্রণালয়ের দায়িত্ব দেওয়া হয়?", options: ["পররাষ্ট্র মন্ত্রণালয়", "তথ্য ও সম্প্রচার মন্ত্রণালয়", "শিক্ষা মন্ত্রণালয়", "আইন মন্ত্রণালয়"], correct: 1 },
-{ question: "74. বাংলাদেশের মন্ত্রিসভায় সম্প্রসারণের সময় আবদুল মঈন খান কোন মন্ত্রণালয়ের দায়িত্ব পান?", options: ["স্থানীয় সরকার, পল্লী উন্নয়ন ও সমবায় মন্ত্রণালয়", "অর্থ মন্ত্রণালয়", "স্বরাষ্ট্র মন্ত্রণালয়", "পররাষ্ট্র মন্ত্রণালয়"], correct: 0 },
-{ question: "75. বাংলাদেশের মন্ত্রিসভায় সম্প্রসারণের সময় সাচিং প্রু জেরী কোন মন্ত্রণালয়ের দায়িত্ব পান?", options: ["পার্বত্য চট্টগ্রাম বিষয়ক মন্ত্রণালয়", "দুর্যোগ ব্যবস্থাপনা ও ত্রাণ মন্ত্রণালয়", "সংস্কৃতি বিষয়ক মন্ত্রণালয়", "মৎস্য ও প্রাণিসম্পদ মন্ত্রণালয়"], correct: 0 },
-{ question: "76. বাংলাদেশের মন্ত্রিসভায় সম্প্রসারণের সময় রাশিদুজ্জামান মিল্লাত কোন মন্ত্রণালয়ের দায়িত্ব পান?", options: ["বেসামরিক বিমান পরিবহন ও পর্যটন মন্ত্রণালয়", "নৌপরিবহন মন্ত্রণালয়", "রেলপথ মন্ত্রণালয়", "বাণিজ্য মন্ত্রণালয়"], correct: 0 },
-{ question: "77. বাংলাদেশের সংসদে অন্তর্বর্তী সরকারের জারি করা অধ্যাদেশগুলো পর্যালোচনার উদ্দেশ্য কী?", options: ["অধ্যাদেশগুলোকে আইন হিসেবে বহাল রাখা, সংশোধন করা বা বাতিলের সিদ্ধান্ত নেওয়া", "সব অধ্যাদেশকে স্বয়ংক্রিয়ভাবে স্থায়ী করা", "সংসদ বিলুপ্ত করা", "নির্বাচন কমিশন বিলুপ্ত করা"], correct: 0 },
-{ question: "78. বাংলাদেশের মন্ত্রিসভায় আলোচিত গুম প্রতিরোধ ও প্রতিকার আইন প্রণয়নের মূল উদ্দেশ্য কী?", options: ["জোরপূর্বক গুম অপরাধ হিসেবে দমন এবং ভুক্তভোগীদের ন্যায়বিচার নিশ্চিত করা", "বিদেশি বাণিজ্য নিয়ন্ত্রণ", "শিক্ষাপ্রতিষ্ঠানের পাঠ্যক্রম পরিবর্তন", "স্থানীয় সরকার নির্বাচন স্থগিত করা"], correct: 0 },
-{ question: "79. বাংলাদেশ নতুন ঋণ কর্মসূচি নিয়ে কোন আন্তর্জাতিক আর্থিক প্রতিষ্ঠানের সঙ্গে আলোচনা চালাচ্ছে?", options: ["বিশ্ব বাণিজ্য সংস্থা (WTO)", "আন্তর্জাতিক মুদ্রা তহবিল (IMF)", "এশীয় উন্নয়ন ব্যাংক (ADB)", "ইসলামি উন্নয়ন ব্যাংক (IsDB)"], correct: 1 },
-{ question: "80. বাংলাদেশের মূল্যস্ফীতি নিয়ন্ত্রণে IMF কোন নীতির ওপর গুরুত্ব দিয়েছে?", options: ["অত্যন্ত শিথিল মুদ্রানীতি", "কঠোর মুদ্রানীতি ও বৃহত্তর অর্থনৈতিক সংস্কার", "সব ধরনের কর বাতিল", "ব্যাংকঋণ সম্পূর্ণ বন্ধ"], correct: 1 },
-      ];
+      { question: "1. 'অপরিচিতা' গল্পের বিশেষ দিক কোনটি?", options: ["নারীর সঠিক মূল্যায়ন", "পুরুষতন্ত্রের অসারতা", "নারীশিক্ষার প্রসার", "নারীর ব্যক্তিত্বের জাগরণ"], correct: 3 },
+      { question: "2. 'বেঙ্গল গেজেট' কার সম্পাদনায় প্রকাশিত হয়?", options: ["জেমস অগাস্টাস হিকি", "হরিনাথ মজুমদার", "ঈশ্বরচন্দ্র বিদ্যাসাগর", "অক্ষয় কুমার দত্ত"], correct: 0 },
+      { question: "3. রবীন্দ্রনাথের 'সোনার তরী' কবিতায় মূলত কী ব্যক্ত হয়েছে?", options: ["মেঘের গর্জন", "বর্ষার চিত্র", "কবির আনন্দ", "কবির বেদনা"], correct: 3 },
+      { question: "4. "যদিও তিনি ধনী, তবুও তিনি কৃপণ।"—বাক্যটিকে সরল বাক্যে রূপান্তর করলে নিচের কোনটি সঠিক হবে?", options: ["তিনি ধনী কিন্তু কৃপণ", "ধনী হওয়া সত্ত্বেও তিনি কৃপণতা করেন", "ধনী হলেও তিনি কৃপণ", "তাঁর ধন থাকলেও তিনি কৃপণ"], correct: 2 },
+      { question: "5. 'যার উপস্থিত বুদ্ধি আছে' এবং 'যে গাছ অন্য গাছের ওপর জন্মায়'—এদের এককথায় প্রকাশ যথাক্রমে কী হবে?", options: ["আশুবুদ্ধি ও পরজীবী", "প্রত্যুৎপন্নমতি ও আগাছা", "বুদ্ধিমান ও পরভৃত", "প্রত্যুৎপন্নমতি ও পরগাছা"], correct: 3 },
+      { question: "6. 'লালসালু' উপন্যাসে মজিদের চরিত্রে মহব্বতপুর গ্রামের মানুষের অন্ধবিশ্বাসের সুযোগ নেওয়ার মূল মনস্তাত্ত্বিক কারণ কী ছিল?", options: ["ধর্মীয় শাসন কায়েম করা", "নিজের অস্তিত্ব রক্ষা ও ক্ষমতার লিপ্সা", "গ্রামবাসীর নৈতিক উন্নয়ন করা", "খালেক ব্যাপারীর ওপর প্রতিশোধ নেওয়া"], correct: 1 },
+      { question: "7. 'অপরিচিতা' গল্পে অনুপমের মামার ব্যক্তিত্বের কোন দিকটি সবচেয়ে বেশি প্রকাশ পেয়েছে?", options: ["চরম অর্থলিপ্সা ও সংকীর্ণতা", "ভাগ্নের প্রতি অন্ধ স্নেহ", "আভিজাত্যের অহংকার", "কল্যাণীর প্রতি গভীর বিদ্বেষ"], correct: 0 },
+      { question: "8. কাজী নজরুল ইসলামের 'বিদ্রোহী' কবিতায় উল্লিখিত 'অর্ফিয়াস' (Orpheus) মূলত কোন দেশের পুরাণের চরিত্র?", options: ["রোমান পুরাণ", "ভারতীয় পুরাণ", "গ্রিক পুরাণ", "মিশরীয় পুরাণ"], correct: 2 },
+      { question: "9. 'অর্ধাঙ্গী' প্রবন্ধে বেগম রোকেয়া সাখাওয়াত হোসেন তৎকালীন সমাজে নারীর অবস্থানকে কার সাথে তুলনা করেছেন?", options: ["গৃহপালিত পশুর সাথে", "অন্ধকারের বন্দির সাথে", "স্বামীর ছায়ার সাথে", "ডানাবিহীন পাখির সাথে"], correct: 1 },
+      { question: "10. আল মাহমুদের 'প্রত্যাবর্তনের লজ্জা' কবিতাটি কবির কোন কাব্যগ্রন্থের অন্তর্ভুক্ত?", options: ["লোক লোকান্তর", "কালের কলস", "মায়াবী পর্দা দুলে ওঠো", "সোনালী কাবিন"], correct: 3 },
+      { question: "11. 'তাহারে পড়ে মনে' কবিতায় কবির উদাসীনতার মূল কারণ কী?", options: ["বসন্তের আগমনে কবির অনীহা", "প্রকৃতির রুক্ষ ও জীর্ণ রূপ", "কবির ব্যক্তিগত জীবনের তীব্র শোকানুভূতি", "ভক্তদের অতি উৎসাহী আচরণ"], correct: 2 },
+      { question: "12. 'নেকলেস' গল্পের মূল নৈতিক শিক্ষা (Moral Lesson) কী?", options: ["কৃত্রিম অহংকার ও অসত্য জীবনকে ধ্বংসের মুখে ঠেলে দেয়", "ভাগ্যকে মেনে নেওয়াই মানুষের নিয়তি", "অতিরিক্ত অলংকারপ্রীতি সর্বনাশের কারণ", "বন্ধুদের সবসময় দামি উপহার দেওয়া উচিত"], correct: 0 },
+      { question: "13. 'আমি কিংবদন্তির কথা বলছি' কবিতায় 'কিংবদন্তি' শব্দটি কবি কী অর্থে ব্যবহার করেছেন?", options: ["অলৌকিক কোনো উপকথা", "ঐতিহ্যের ধারক ও সংগ্রামী পূর্বপুরুষ", "কোনো কাল্পনিক বীরের কাহিনি", "প্রাচীন সমাজব্যবস্থার নিয়মাবলি"], correct: 1 },
+      { question: "14. 'বিলাসী' গল্পে লেখক শরৎচন্দ্র চট্টোপাধ্যায় তৎকালীন হিন্দু সমাজের কোন অন্ধকার দিকটিকে তীব্রভাবে আক্রমণ করেছেন?", options: ["অর্থনৈতিক বৈষম্য", "জাতিভেদ প্রথা ও সংকীর্ণ মানসিকতা", "শিক্ষার অভাব", "যৌথ পরিবারের কলহ"], correct: 1 },
+      { question: "15. 'প্রতিদান' কবিতায় 'কাঁটা' শব্দের মাধ্যমে কবি জসীমউদ্দীন মানুষের কোন আচরণকে বুঝিয়েছেন?", options: ["দারিদ্র্য ও দুঃখ", "নিষ্ঠুরতা ও হিংসা", "পথের বাধা", "শারীরিক অসুস্থতা"], correct: 1 },
+      { question: "16. 'উচ্চারণ' শব্দটিতে মোট কয়টি দল বা অক্ষর (Syllable) রয়েছে?", options: ["দুইটি", "তিনটি", "চারটি", "পাঁচটি"], correct: 1 },
+      { question: "17. বাংলা আভিধানিক ক্রম অনুসারে নিচের কোন শব্দগুচ্ছটি সঠিক অনুক্রমে সাজানো আছে?", options: ["ক্ষুর, গঙ্গা, চক্ষু, জ্ঞান", "গঙ্গা, ক্ষুর, জ্ঞান, চক্ষু", "চক্ষু, জ্ঞান, ক্ষুর, গঙ্গা", "জ্ঞান, চক্ষু, গঙ্গা, ক্ষুর"], correct: 0 },
+      { question: "18. 'অপরিচিতা' গল্পে বিবাহলগ্নে কন্যাকর্তা শম্ভুনাথ সেনের আচরণে কোন বৈশিষ্ট্যটি সবচেয়ে উজ্জ্বল হয়ে উঠেছিল?", options: ["লোভ ও চতুরতা", "আত্মমর্যাদাবোধ ও দৃঢ়তা", "ভীরুতা ও নম্রতা", "আভিজাত্যের অহংকার"], correct: 1 },
+      { question: "19. 'সোনার তরী' কবিতায় 'ভরা নদী ক্ষুরধারা' বলতে নদীর কোন অবস্থাকে বোঝানো হয়েছে?", options: ["শান্ত ও শান্তিময় প্রবাহ", "শুকিয়ে যাওয়া মরা নদী", "ক্ষুরের মতো ধারালো ও হিংস্র গতিময় স্রোত", "চারদিকে উপচে পড়া বন্যা"], correct: 2 },
+      { question: "20. নিচের কোন জোড়ের দুটি বানানই সম্পূর্ণ শুদ্ধ?", options: ["মুহুর্ত ও নুপুর", "মুহূর্ত ও নূপুর", "মূহুর্ত ও নূপুর", "মুহূর্ত ও নুপুর"], correct: 1 },
+      { question: "21. 'যৌবনের গান' প্রবন্ধে নজরুল 'বার্ধক্য' বলতে মূলত কী বুঝিয়েছেন?", options: ["বয়স ষাট বছরের বেশি হওয়া", "শারীরিক সক্ষমতা হারিয়ে ফেলা", "মৃতপ্রায়, গতিহীন ও সংস্কারাচ্ছন্ন মন", "অভিজ্ঞতায় সমৃদ্ধ প্রবীণ ব্যক্তি"], correct: 2 },
+      { question: "22. আড়চোখে যে চাউনি, তাকে কী বলে?", options: ["আরূঢ়", "আরাধিত", "কটাক্ষ", "বরাভয়"], correct: 2 },
+      { question: "23. Noun of the word 'brief' is—", options: ["Briefly", "Brief", "Brevity", "None of these"], correct: 2 },
+      { question: "24. 'I'm a deeply superficial person.' The sentence is an example of—", options: ["Hyperbole", "Oxymoron", "Simile", "Metaphor"], correct: 1 },
+      { question: "25. 'Bird's-eye view' means—", options: ["See exhaustively", "Eyes of birds", "Person in similar nature", "A rough idea"], correct: 3 },
+      { question: "26. His explanation was unnecessarily convoluted and confusing. The antonym of 'convoluted' is—", options: ["Intricate", "Perplexing", "Simple", "Laudatory"], correct: 2 },
+      { question: "27. Although the author's language is relatively simple, the underlying themes of the novel are—", options: ["Trivial", "Predictable", "Superficial", "Profound"], correct: 3 },
+      { question: "28. The sun shines --- our heads at noon.", options: ["over", "on", "above", "in"], correct: 2 },
+      { question: "29. "One should keep one's promise." The passive voice is—", options: ["A promise should be kept.", "A promise should be kept by one.", "One's promise should be kept by one.", "Promise should be kept."], correct: 0 },
+      { question: "30. What would you do if you --- a ghost?", options: ["see", "saw", "had seen", "will see"], correct: 1 },
+      { question: "31. Who is the author of the story "The Old Man at the Bridge"?", options: ["Bob Dylan", "George Herbert", "Ernest Hemingway", "W. H. Auden"], correct: 2 },
+      { question: "32. Synonym of 'MITIGATE':", options: ["Aggravate", "Intensify", "Alleviate", "Worsen"], correct: 2 },
+      { question: "33. Antonym of 'QUERULOUS':", options: ["Complaining", "Contented", "Fretful", "Petulant"], correct: 1 },
+      { question: "34. "I saw ocean in your eyes." It is an example of—", options: ["Paradox", "Metaphor", "Hyperbole", "Simile"], correct: 1 },
+      { question: "35. 'Take the bull by the horns' means—", options: ["To be brave", "To deal with a difficulty directly", "To be afraid", "To run away"], correct: 1 },
+      { question: "36. He is endowed --- great talents.", options: ["with", "by", "in", "of"], correct: 0 },
+      { question: "37. Choose the correctly spelt word.", options: ["Tyranny", "Tyranney", "Tiranney", "Tyrenny"], correct: 0 },
+      { question: "38. Choose the sentence that is grammatically correct.", options: ["That Mina secured the highest marks are really surprising.", "That Mina secured the highest marks were really surprising.", "That Mina secured the highest marks is really surprising.", "That Mina secured the highest mark have been really surprising."], correct: 2 },
+      { question: "39. He argued --- his brother over a trivial matter.", options: ["to", "with", "for", "at"], correct: 1 },
+      { question: "40. Choose the correct sentence.", options: ["Many teenagers addicted to social media.", "Many teenagers are addicting to social media.", "Many teenagers being addicted to social media.", "Many teenagers are addicted to social media."], correct: 3 },
+      { question: "41. বাংলাদেশের কোন ভূমিরূপটি সবচেয়ে পুরাতন?", options: ["প্লাইস্টোশিন", "টারশিয়ারি", "প্লাবন ভূমি", "লালমাই পাহাড়"], correct: 1 },
+      { question: "42. বাংলাদেশের কোন অঞ্চলে আকস্মিক বন্যা হয়?", options: ["উত্তর-পশ্চিমাঞ্চল", "উত্তর-পূর্বাঞ্চল", "দক্ষিণ-পশ্চিমাঞ্চল", "দক্ষিণ-পূর্বাঞ্চল"], correct: 1 },
+      { question: "43. কোনটি জলবায়ুর উপাদান নয়?", options: ["উষ্ণতা", "আর্দ্রতা", "বায়ুপ্রবাহ", "সমুদ্রস্রোত"], correct: 3 },
+      { question: "44. হালদা ভ্যালি কোথায় অবস্থিত?", options: ["রাঙ্গামাটি", "খাগড়াছড়ি", "বান্দরবান", "চট্টগ্রাম"], correct: 1 },
+      { question: "45. গ্রিনিচ প্রমাণ সময়ের সাথে বাংলাদেশ সময়ের পার্থক্য কত ঘণ্টা?", options: ["৬ ঘণ্টা", "+ ১২ ঘণ্টা", "- ৫ ঘণ্টা", "+ ৬ ঘণ্টা"], correct: 3 },
+      { question: "46. বাংলাদেশের মহীসোপানের দৈর্ঘ্য কত?", options: ["১২ নটিক্যাল মাইল", "৩৫০ নটিক্যাল মাইল", "২০০ নটিক্যাল মাইল", "৩৫৪ নটিক্যাল মাইল"], correct: 3 },
+      { question: "47. যশোরের পূর্বনাম কী?", options: ["খলিফাবাদ", "খলিফাতাবাদ", "জাহানাবাদ", "নাসিরাবাদ"], correct: 1 },
+      { question: "48. বরেন্দ্র অঞ্চলের প্রধান খনিজ কোনটি?", options: ["কয়লা", "প্রাকৃতিক গ্যাস", "গ্রানাইট", "কালো সোনা"], correct: 0 },
+      { question: "49. বাংলাদেশের সীমান্তবর্তী ভারতের জেলা কতটি?", options: ["৩২টি", "৩৩টি", "৩০টি", "৩টি"], correct: 0 },
+      { question: "50. বাংলাদেশের বৃহত্তম পাহাড় কোনটি?", options: ["মোদক টং", "তাজিং ডং", "গারো পাহাড়", "চন্দ্রনাথ পাহাড়"], correct: 2 },
+      { question: "51. কর্ণফুলী নদীতে বাঁধ দেওয়ার ফলে কোন লেকের সৃষ্টি হয়েছে?", options: ["ফয়েজ লেক", "মহামায়া লেক", "প্রান্তিক লেক", "কাপ্তাই লেক"], correct: 3 },
+      { question: "52. বন্যার ঝুঁকিতে বিশ্বে বাংলাদেশের অবস্থান কততম?", options: ["২য়", "৭ম", "৪র্থ", "১ম"], correct: 3 },
+      { question: "53. ব-দ্বীপ পরিকল্পনা বাস্তবায়নে কতটি হটস্পট নির্ধারণ করা হয়েছে?", options: ["৬টি", "৫টি", "৩৩টি", "৮টি"], correct: 0 },
+      { question: "54. 'বাংলাদেশের ছাদ' বলা হয় কাকে?", options: ["সাজেক ভ্যালি", "বান্দরবান", "খাগড়াছড়ি", "চিম্বুক পাহাড়"], correct: 1 },
+      { question: "55. ষষ্ঠ জনশুমারি ও গৃহগণনা-২০২২-এর চূড়ান্ত প্রতিবেদন অনুযায়ী, জনসংখ্যার ঘনত্ব সর্বনিম্ন কোন জেলায়?", options: ["বান্দরবান", "রাঙ্গামাটি", "খাগড়াছড়ি", "বরিশাল"], correct: 1 },
+      { question: "56. নিচের কোন বিলকে পশ্চিমা বাহিনীর নদী নামে অভিহিত করা হয়?", options: ["চলন বিল", "আড়িয়াল বিল", "ভবদহ বিল", "ডাকাতিয়া বিল"], correct: 3 },
+      { question: "57. 'বাংলাদেশ ডেল্টা প্ল্যান' কিসের সাথে সম্পৃক্ত?", options: ["গ্রিনহাউজ গ্যাস", "জলবায়ু পরিবর্তন", "কর্মসংস্থান সৃষ্টি", "বিশ্বায়ন"], correct: 1 },
+      { question: "58. জাতীয় দুর্যোগ ব্যবস্থাপনা নীতিমালা প্রণীত হয় কবে?", options: ["২০১২ সালে", "২০১৪ সালে", "২০১৬ সালে", "২০১৫ সালে"], correct: 3 },
+      { question: "59. বাংলাদেশের সর্বশেষ সিটি কর্পোরেশন কোনটি?", options: ["ময়মনসিংহ", "গাজীপুর", "বগুড়া", "ফরিদপুর"], correct: 2 },
+      { question: "60. বর্তমানে দেশে থানার সংখ্যা কতটি?", options: ["৬৫৯টি", "৩৩০টি", "৫০০টি", "৪৯৫টি"], correct: 0 },
+      { question: "61. বাংলাদেশের বর্তমান রাষ্ট্রপতি কে?", options: ["তারেক রহমান", "মির্জা ফখরুল ইসলাম আলমগীর", "আমীর খসরু মাহমুদ চৌধুরী", "সালাহউদ্দিন আহমদ"], correct: 1 },
+      { question: "62. বাংলাদেশের বর্তমান সরকারের পররাষ্ট্রমন্ত্রী কে?", options: ["খলিলুর রহমান", "মির্জা ফখরুল ইসলাম আলমগীর", "আন্দালিভ রহমান পার্থ", "আমীর খসরু মাহমুদ চৌধুরী"], correct: 0 },
+      { question: "63. বাংলাদেশের বর্তমান সরকারের অর্থ ও পরিকল্পনামন্ত্রী কে?", options: ["সালাহউদ্দিন আহমদ", "আমীর খসরু মাহমুদ চৌধুরী", "আবদুল মঈন খান", "ইকবাল হাসান মাহমুদ"], correct: 1 },
+      { question: "64. বাংলাদেশের বর্তমান সরকারের স্বরাষ্ট্রমন্ত্রী কে?", options: ["খলিলুর রহমান", "আরিফুল হক চৌধুরী", "সালাহউদ্দিন আহমদ", "আসাদুজ্জামান"], correct: 2 },
+      { question: "65. বাংলাদেশের বর্তমান সরকারের শিক্ষা এবং প্রাথমিক ও গণশিক্ষামন্ত্রী কে?", options: ["এ এইচ এম এহছানুল হক মিলন", "নিতাই রায় চৌধুরী", "মিজানুর রহমান মিনু", "ফকির মাহবুব আনাম"], correct: 0 },
+      { question: "66. বাংলাদেশের বর্তমান সরকারের বিদ্যুৎ, জ্বালানি ও খনিজ সম্পদমন্ত্রী কে?", options: ["শেখ রবিউল আলম", "ইকবাল হাসান মাহমুদ", "আবদুল আউয়াল মিন্টু", "মোহাম্মদ আমিন উর রশিদ"], correct: 1 },
+      { question: "67. বাংলাদেশের বর্তমান সরকারের শিল্প, বস্ত্র ও পাট এবং বাণিজ্যমন্ত্রী কে?", options: ["খন্দকার আব্দুল মুক্তাদির", "আমীর খসরু মাহমুদ চৌধুরী", "আবদুল মঈন খান", "আন্দালিভ রহমান পার্থ"], correct: 0 },
+      { question: "68. বাংলাদেশের বর্তমান সরকারের পরিবেশ, বন ও জলবায়ু পরিবর্তনমন্ত্রী কে?", options: ["আসাদুল হাবিব দুলু", "আবদুল আউয়াল মিন্টু", "মোহাম্মদ আমিন উর রশিদ", "শহীদউদ্দীন চৌধুরী এ্যানি"], correct: 1 },
+      { question: "69. বাংলাদেশের বর্তমান সরকারের ডাক, টেলিযোগাযোগ ও তথ্যপ্রযুক্তিমন্ত্রী কে?", options: ["ফকির মাহবুব আনাম", "শেখ রবিউল আলম", "নিতাই রায় চৌধুরী", "আহমেদ আযম খান"], correct: 0 },
+      { question: "70. বাংলাদেশের বর্তমান সরকারের আইন, বিচার ও সংসদবিষয়কমন্ত্রী কে?", options: ["জাকারিয়া তাহের", "মোঃ আসাদুজ্জামান", "সালাহউদ্দিন আহমদ", "আবদুল মঈন খান"], correct: 1 },
+      { question: "71. বাংলাদেশের দুর্নীতি দমন কমিশনের (দুদক) চেয়ারম্যান হিসেবে নিয়োগ পান কে?", options: ["এ কে এম আসাদুজ্জামান", "জাহাঙ্গীর আলম খান", "মোঃ সাজ্জাদ হোসেন ভূঁইয়া", "খলিলুর রহমান"], correct: 0 },
+      { question: "72. বাংলাদেশের দুর্নীতি দমন কমিশন কোন ধরনের অপরাধ প্রতিরোধ ও অনুসন্ধানের সঙ্গে যুক্ত?", options: ["শুধু সাইবার অপরাধ", "দুর্নীতি ও দুর্নীতিসংশ্লিষ্ট অপরাধ", "শুধু সীমান্ত অপরাধ", "শুধু পরিবেশদূষণ"], correct: 1 },
+      { question: "73. বাংলাদেশের মন্ত্রিসভায় সম্প্রসারণের সময় আন্দালিভ রহমান পার্থকে কোন মন্ত্রণালয়ের দায়িত্ব দেওয়া হয়?", options: ["পররাষ্ট্র মন্ত্রণালয়", "তথ্য ও সম্প্রচার মন্ত্রণালয়", "শিক্ষা মন্ত্রণালয়", "আইন মন্ত্রণালয়"], correct: 1 },
+      { question: "74. বাংলাদেশের মন্ত্রিসভায় সম্প্রসারণের সময় আবদুল মঈন খান কোন মন্ত্রণালয়ের দায়িত্ব পান?", options: ["স্থানীয় সরকার, পল্লী উন্নয়ন ও সমবায় মন্ত্রণালয়", "অর্থ মন্ত্রণালয়", "স্বরাষ্ট্র মন্ত্রণালয়", "পররাষ্ট্র মন্ত্রণালয়"], correct: 0 },
+      { question: "75. বাংলাদেশের মন্ত্রিসভায় সম্প্রসারণের সময় সাচিং প্রু জেরী কোন মন্ত্রণালয়ের দায়িত্ব পান?", options: ["পার্বত্য চট্টগ্রাম বিষয়ক মন্ত্রণালয়", "দুর্যোগ ব্যবস্থাপনা ও ত্রাণ মন্ত্রণালয়", "সংস্কৃতি বিষয়ক মন্ত্রণালয়", "মৎস্য ও প্রাণিসম্পদ মন্ত্রণালয়"], correct: 0 },
+      { question: "76. বাংলাদেশের মন্ত্রিসভায় সম্প্রসারণের সময় রাশিদুজ্জামান মিল্লাত কোন মন্ত্রণালয়ের দায়িত্ব পান?", options: ["বেসামরিক বিমান পরিবহন ও পর্যটন মন্ত্রণালয়", "নৌপরিবহন মন্ত্রণালয়", "রেলপথ মন্ত্রণালয়", "বাণিজ্য মন্ত্রণালয়"], correct: 0 },
+      { question: "77. বাংলাদেশের সংসদে অন্তর্বর্তী সরকারের জারি করা অধ্যাদেশগুলো পর্যালোচনার উদ্দেশ্য কী?", options: ["অধ্যাদেশগুলোকে আইন হিসেবে বহাল রাখা, সংশোধন করা বা বাতিলের সিদ্ধান্ত নেওয়া", "সব অধ্যাদেশকে স্বয়ংক্রিয়ভাবে স্থায়ী করা", "সংসদ বিলুপ্ত করা", "নির্বাচন কমিশন বিলুপ্ত করা"], correct: 0 },
+      { question: "78. বাংলাদেশের মন্ত্রিসভায় আলোচিত গুম প্রতিরোধ ও প্রতিকার আইন প্রণয়নের মূল উদ্দেশ্য কী?", options: ["জোরপূর্বক গুম অপরাধ হিসেবে দমন এবং ভুক্তভোগীদের ন্যায়বিচার নিশ্চিত করা", "বিদেশি বাণিজ্য নিয়ন্ত্রণ", "শিক্ষাপ্রতিষ্ঠানের পাঠ্যক্রম পরিবর্তন", "স্থানীয় সরকার নির্বাচন স্থগিত করা"], correct: 0 },
+      { question: "79. বাংলাদেশ নতুন ঋণ কর্মসূচি নিয়ে কোন আন্তর্জাতিক আর্থিক প্রতিষ্ঠানের সঙ্গে আলোচনা চালাচ্ছে?", options: ["বিশ্ব বাণিজ্য সংস্থা (WTO)", "আন্তর্জাতিক মুদ্রা তহবিল (IMF)", "এশীয় উন্নয়ন ব্যাংক (ADB)", "ইসলামি উন্নয়ন ব্যাংক (IsDB)"], correct: 1 },
+      { question: "80. বাংলাদেশের মূল্যস্ফীতি নিয়ন্ত্রণে IMF কোন নীতির ওপর গুরুত্ব দিয়েছে?", options: ["অত্যন্ত শিথিল মুদ্রানীতি", "কঠোর মুদ্রানীতি ও বৃহত্তর অর্থনৈতিক সংস্কার", "সব ধরনের কর বাতিল", "ব্যাংকঋণ সম্পূর্ণ বন্ধ"], correct: 1 }
+    ];
 
     let userName = "";
     let currentIndex = 0;
@@ -766,7 +766,7 @@
       currentIndex = index;
       const qData = questionsDatabase[currentIndex];
 
-      document.getElementById('progress-text').innerText = `প্রশ্ন ${currentIndex + 1}/${questionsDatabase.length}`;
+      document.getElementById('progress-text').innerText = `Question ${currentIndex + 1}/${questionsDatabase.length}`;
       document.getElementById('progress-bar').style.width = `${((currentIndex + 1) / questionsDatabase.length) * 100}%`;
       document.getElementById('question-title').innerText = qData.question;
 
@@ -774,7 +774,7 @@
       document.getElementById('prev-btn').disabled = (currentIndex === 0);
       document.getElementById('next-btn').disabled = (currentIndex === questionsDatabase.length - 1);
 
-      // Submit btn sudu 40 no. prosthne
+      // Submit btn sudu 80 no. prosthne
       const submitBtn = document.getElementById('submit-btn');
       if (currentIndex === questionsDatabase.length - 1) {
         submitBtn.style.display = 'inline-block';
@@ -897,7 +897,7 @@
         item.innerHTML = `
           <div class="review-q">${q.question}</div>
           <div class="review-ans">
-            <span>:your answer <strong style="color: ${isCorrect ? 'var(--correct-text)' : (isWrong ? 'var(--wrong-text)' : 'var(--skipped-text)')}">${selectedText}</strong></span>
+            <span>your answer: <strong style="color: ${isCorrect ? 'var(--correct-text)' : (isWrong ? 'var(--wrong-text)' : 'var(--skipped-text)')}">${selectedText}</strong></span>
             ${!isCorrect ? `<span>Right answer: <strong style="color: var(--correct-text)">${correctText}</strong></span>` : ''}
           </div>
         `;
@@ -917,9 +917,9 @@
       document.getElementById('accuracy-rate').innerText = `${accuracy}%`;
 
       const perfBadge = document.getElementById('performance-badge');
-      if (totalScore >= 30) {
+      if (totalScore >= 60) {
         perfBadge.innerHTML = `<i class="fa-solid fa-trophy"></i> চমৎকার প্রস্তুতি! (Outstanding)`;
-      } else if (totalScore >= 20) {
+      } else if (totalScore >= 40) {
         perfBadge.innerHTML = `<i class="fa-solid fa-medal"></i> ভালো ফলাফল (Good Job)`;
       } else {
         perfBadge.innerHTML = `<i class="fa-solid fa-book-open"></i> আরও অনুশীলন প্রয়োজন`;
@@ -935,7 +935,7 @@
         wrongQuestionsBreakdown: wrongQuestionsList,
         submittedAt: new Date().toISOString()
       })
-      .then(() => console.log("Result saved to Firestore 'quiz_results 6' successfully!"))
+      .then(() => console.log("Result saved to Firestore 'quiz_results 8' successfully!"))
       .catch((err) => console.error("Firestore Save Error: ", err));
     }
   </script>
